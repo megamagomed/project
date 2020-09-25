@@ -1,32 +1,53 @@
 "use strict";
 
-const arr = [1, 2, 3, 6, 8];
+let a = 5,
+    b = a;
+b=b+5;
+console.log(b);
+console.log(a);
 
-/*arr[99] = 0;
-console.log(arr);
-console.log(arr.length);*/
+const obj = {
+    a: 5,
+    b: 1
 
-arr.forEach(function (item, i, arr){
-    console.log(`${i}: ${item} внутри массива ${arr}`)
-});
+};
 
+// const copy = obj;
+// copy.a = 10;
+// console.log(copy);
+// console.log(obj);
 
-/*
-arr.pop();
-console.log(arr);
-arr.push(8);
-
-console.log(arr);
-for (let i = 0; i < arr.length; i++){
-    console.log(arr[i]);
+function copy(mainObj) {
+    let objCopy = {};
+    let key;
+    for (key in mainObj) {
+        objCopy[key] = mainObj[key];
+    }
+    return objCopy;
 }
-for(let value of arr){
-    console.log(value);
-}*/
 
-const str = prompt("", "");
-//const products = str.split(", ");
-//console.log(products.join("; "));
-//products.sort();
-//console.log(products)
+const number = {
+    a: 7,
+    b: 3,
+    c: {
+        x: 4,
+        b: 6
+    }
+}
 
+copy(number);
+const newNumbers = copy(number);
+console.log(newNumbers);
+newNumbers.a = 123;
+console.log(newNumbers);
+console.log(number)
+
+const add = {
+    d: 10,
+    e: 45
+}
+
+const clone = Object.assign({}, add);
+clone.d = 100;
+// console.log (add);
+// console.log(clone);
